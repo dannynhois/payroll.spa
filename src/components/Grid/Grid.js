@@ -10,13 +10,7 @@ class Grid extends Component {
   }
   componentDidMount() {
     // this.loadData();
-    this.setState({
-      columns: [
-        { key: "name", name: "Name" },
-        { key: "object", name: "Object" },
-        { key: "amount", name: "Amount" }
-      ]
-    });
+    
     this.loadData();
     
   }
@@ -27,6 +21,13 @@ class Grid extends Component {
     await API.getData()
       .then(res => this.setState({ employees: res.data }))
       .catch(err => console.log(err));
+    this.setState({
+      columns: [
+        { key: "name", name: "Name" },
+        { key: "object", name: "Object" },
+        { key: "amount", name: "Amount" }
+      ]
+    });
     this.createRows();
   };
   createRows = () => {
